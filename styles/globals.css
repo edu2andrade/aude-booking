@@ -10,9 +10,11 @@
   scroll-behavior: smooth;
 }
 
+/* font-family it's not working in Chrome */
+
 body {
-  background-color: #0f172a;
   /* slate 900 */
-  color: #d1d5db;
-  /* gray 300 */
+  color: #0f172a;
+  /* violet 200 */
+  background-color: #ddd6fe;
 }

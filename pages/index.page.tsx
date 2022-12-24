@@ -1,9 +1,11 @@
 import Head from 'next/head'
 import { Hanken_Grotesk } from '@next/font/google'
+import { HomePage } from './home'
 
+/* font-family it's not working in Chrome */
 const hGrotesk = Hanken_Grotesk({
   subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: ['200', '400', '700'],
 })
 
 export default function Home() {
@@ -15,9 +17,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={hGrotesk.className}>
-        <h1 className='text-3xl font-bold '>Hello World</h1>
-        <p>This font weight should be 400</p>
+      <main className={`${hGrotesk.className} h-screen`}>
+        <HomePage />
       </main>
     </>
   )
