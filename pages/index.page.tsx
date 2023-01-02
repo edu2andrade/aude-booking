@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { Hanken_Grotesk } from '@next/font/google'
 import { HomePage } from './home'
+import { Register } from './register/index.page'
 
 /* font-family it's not working in Chrome */
 const hGrotesk = Hanken_Grotesk({
@@ -18,7 +19,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${hGrotesk.className} h-screen`}>
-        <HomePage />
+        {/* <HomePage /> */}
+        <Register />
       </main>
     </>
   )
