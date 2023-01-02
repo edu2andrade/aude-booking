@@ -2,7 +2,7 @@ import Image from "next/image"
 import { UsernameForm } from "./components/UsernameForm"
 import calendarImg from '/public/calendar.png'
 
-export const HomePage = () => {
+export default function HomePage() {
   return (
     <section className='h-screen px-24 flex justify-center items-center gap-20'>
       <div>
