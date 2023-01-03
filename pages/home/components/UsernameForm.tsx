@@ -1,6 +1,9 @@
 import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/router'
+
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+
 import { BsArrowRight } from 'react-icons/bs'
 
 const UsernameFormSchema = zod.object({
@@ -16,12 +19,15 @@ const UsernameFormSchema = zod.object({
 type UsernameFormData = zod.infer<typeof UsernameFormSchema>
 
 export const UsernameForm = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<UsernameFormData>({
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<UsernameFormData>({
     resolver: zodResolver(UsernameFormSchema)
   })
 
+  const router = useRouter()
+
   async function handleUsernameForm(data: UsernameFormData) {
-    console.log(data)
+    const { username } = data
+    await router.push(`/register?username=${username}`)
   }
 
   return (
@@ -41,6 +47,7 @@ export const UsernameForm = () => {
         </div>
         <button
           type="submit"
+          disabled={isSubmitting}
           className='px-4 py-2 flex justify-center items-center gap-2 bg-violet-500 hover:bg-violet-700 transition-colors rounded text-white'
         >
           Crear
