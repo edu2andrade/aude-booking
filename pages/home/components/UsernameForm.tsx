@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { BsArrowRight } from 'react-icons/bs'
+import { Button } from '../../../components/Button'
 
 const UsernameFormSchema = zod.object({
   username: zod
@@ -34,7 +34,7 @@ export const UsernameForm = () => {
     <>
       <form
         onSubmit={handleSubmit(handleUsernameForm)}
-        className='mt-6 mb-2 p-4 flex flex-col justify-center gap-2 bg-violet-300 rounded border border-violet-600'
+        className='mt-6 mb-2 p-4 flex flex-col justify-center gap-2 bg-violet-300 rounded border border-violet-400'
       >
         <div className='flex items-center gap-2'>
           <span>aude-booking/</span>
@@ -45,14 +45,11 @@ export const UsernameForm = () => {
             {...register('username')}
           />
         </div>
-        <button
-          type="submit"
+        <Button
+          title='Crear'
+          type='submit'
           disabled={isSubmitting}
-          className='px-4 py-2 flex justify-center items-center gap-2 bg-violet-500 hover:bg-violet-700 transition-colors rounded text-white'
-        >
-          Crear
-          <BsArrowRight />
-        </button>
+        />
       </form>
       <span className='px-4'>
         {errors.username ? errors.username.message : 'Elige tu username'}

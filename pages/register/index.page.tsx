@@ -5,10 +5,10 @@ import { useForm } from 'react-hook-form'
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { BsArrowRight } from "react-icons/bs"
 import { Multistep } from "./components/Multistep"
 import { api } from "../../lib/axios"
 import { AxiosError } from "axios"
+import { Button } from "../../components/Button"
 
 const RegisterFormSchema = zod.object({
   name: zod
@@ -50,6 +50,7 @@ export default function Register() {
         name: data.name,
         username: data.username,
       })
+      await router.push('/register/connect-calendar')
     } catch (error) {
       if (error instanceof AxiosError && error?.response?.data?.message) {
         return alert(error.response.data.message)
@@ -66,7 +67,7 @@ export default function Register() {
         <Multistep size={4} currentStep={1} />
         <form
           onSubmit={handleSubmit(handleRegisterForm)}
-          className='mt-6 mb-2 p-4 flex flex-col justify-center gap-2 bg-violet-300 rounded border border-violet-600'
+          className='mt-6 mb-2 p-4 flex flex-col justify-center gap-2 bg-violet-300 rounded border border-violet-400'
         >
           <div className='flex items-center gap-2'>
             <span>cal.com/</span>
@@ -93,13 +94,10 @@ export default function Register() {
               {errors.name.message}
             </span>
           )}
-          <button
-            type="submit"
-            className='px-4 py-2 flex justify-center items-center gap-2 bg-violet-500 hover:bg-violet-700 transition-colors rounded text-white'
-          >
-            Próximo paso
-            <BsArrowRight />
-          </button>
+          <Button
+            title='Próximo paso'
+            type='submit'
+          />
         </form>
       </div>
     </section>
